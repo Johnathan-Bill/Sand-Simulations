@@ -2,9 +2,9 @@ import pygame
 import math
 import copy
 import random
-WINDOW_WIDTH = 500
-WINDOW_HEIGHT = 500
-BLOCK_SIZE = 7
+WINDOW_WIDTH = 600
+WINDOW_HEIGHT = 600
+BLOCK_SIZE = 6
 SAND_COUNT = 0
 cols = math.floor(WINDOW_HEIGHT/BLOCK_SIZE)
 rows = math.floor(WINDOW_WIDTH/BLOCK_SIZE)
@@ -27,13 +27,13 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 dragging = True
-            if event.type == pygame.MOUSEBUTTONUP:
+                Drag_Event()
+            if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 dragging = False
-            if event.type == pygame.MOUSEMOTION:
-                if dragging:
-                    Drag_Event()
+            if dragging:
+                Drag_Event()
             if event.type == fall:
                 pygame.display.flip()
                 DrawSand()
